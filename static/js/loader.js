@@ -6,7 +6,7 @@
     loader.classList.add("invisible");
 
     loader.addEventListener("transitionend", () => {
-      document.body.removeChild(loader);
+      loader.remove();
     });
   });
 })();
