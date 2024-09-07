@@ -13,6 +13,7 @@
     </head>
     <body>
         {% include "includes/loader.html" %}
+        {% include "a_htmx_messages/toast_messages.html" %}
         {% include "includes/navbar.html" %}
 
         {% block layout %}
@@ -20,5 +21,6 @@
 
         <script src="{% static "bootstrap-5.3.3/js/bootstrap.bundle.min.js" %}"></script>
         <script src="{% static "js/loader.js" %}"></script>
+        <script src="{% static "a_htmx_messages/js/htmx_messages.js" %}"></script>
     </body>
 </html>
