@@ -5,14 +5,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>New Project</title>
         <link rel="stylesheet" href="{% static "bootstrap-5.3.3/css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/loader.css" %}">
     </head>
     <body>
+        {% include "includes/loader.html" %}
 
         {% block layout %}
         {% endblock layout %}
 
         <script src="{% static "bootstrap-5.3.3/js/bootstrap.bundle.min.js" %}"></script>
+        <script src="{% static "js/loader.js" %}"></script>
     </body>
 </html>

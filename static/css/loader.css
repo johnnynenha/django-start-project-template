@@ -1,0 +1,8 @@
+#loader {
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+#loader .spinner-border {
+  width: 5rem;
+  height: 5rem;
+}
