@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "crispy_forms",
     "crispy_bootstrap5",
+    "django_htmx",
     # apps
     "a_home",
 ]
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 ROOT_URLCONF = "conf.urls"

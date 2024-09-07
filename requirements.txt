@@ -4,3 +4,4 @@ django-extensions==3.2.3
 django-crispy-forms==2.3
 crispy-bootstrap5==2024.2
 django-debug-toolbar==4.4.6
+django-htmx==1.19.0
