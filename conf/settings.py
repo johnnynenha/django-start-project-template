@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "django_htmx",
+    "active_link",
     # apps
     "a_htmx_messages",
     "a_home",
