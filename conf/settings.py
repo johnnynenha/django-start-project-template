@@ -44,9 +44,11 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "django_htmx",
     "active_link",
+    "django_cleanup.apps.CleanupConfig",
     # apps
     "a_htmx_messages",
     "a_home",
+    "a_users",
 ]
 
 MIDDLEWARE = [
@@ -164,3 +166,6 @@ MESSAGE_TAGS = {
     messages.WARNING: "text-bg-warning",
     messages.ERROR: "text-bg-danger",
 }
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
