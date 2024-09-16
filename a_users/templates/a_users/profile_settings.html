@@ -25,7 +25,9 @@
                         {% endif %}
                     </td>
                     <td>
-                        {% if not user.emailaddress_set.first.verified %}<a href="#" class="link">Verify</a>{% endif %}
+                        {% if not user.emailaddress_set.first.verified %}
+                            <a href="{% url "profile-emailverify" %}" class="link">Verify</a>
+                        {% endif %}
                     </td>
                 </tr>
                 <tr>

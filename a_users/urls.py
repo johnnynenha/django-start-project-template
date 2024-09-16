@@ -1,8 +1,9 @@
 from django.urls import path
 
-from .views import profile_settings
+from .views import *
 
 
 urlpatterns = [
     path("settings/", profile_settings, name="profile-settings"),
+    path("email_verify/", profile_emailverify, name="profile-emailverify"),
 ]
