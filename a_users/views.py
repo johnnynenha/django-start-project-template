@@ -6,6 +6,11 @@ from allauth.account.utils import send_email_confirmation
 
 
 @login_required
+def profile_view(request):
+    return render(request, "a_users/profile_view.html")
+
+
+@login_required
 def profile_settings(request):
     return render(request, "a_users/profile_settings.html")
 

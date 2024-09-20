@@ -31,6 +31,9 @@
                            aria-expanded="false">{{ user.username }}</a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
+                                <a class="dropdown-item" href="{% url "profile-view" %}">{% trans "Profile" %}</a>
+                            </li>
+                            <li>
                                 <a class="dropdown-item" href="{% url "profile-settings" %}">{% trans "Settings" %}</a>
                             </li>
                             <li>
