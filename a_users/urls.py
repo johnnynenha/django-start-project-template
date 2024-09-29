@@ -15,5 +15,5 @@ urlpatterns = [
         profile_avatar_img_delete,
         name="profile-delete-avatar-image",
     ),
-    path("@<str:username>/", profile_view, name="profile-view-user"),
+    path("@<str:username>/", profile_view, name="profile-view"),
 ]
