@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.views import redirect_to_login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from allauth.account.utils import send_email_confirmation
@@ -8,9 +9,19 @@ from .models import UserProfile
 from .forms import UserProfileForm
 
 
-@login_required
-def profile_view(request):
-    return render(request, "a_users/profile_view.html")
+def profile_view(request, username=None):
+
+    if username is not None:
+        profile = get_object_or_404(
+            UserProfile.objects.select_related("user"), user__username=username
+        )
+    else:
+        try:
+            profile = request.user.userprofile
+        except:
+            return redirect_to_login(request.get_full_path())
+
+    return render(request, "a_users/profile_view.html", {"profile": profile})
 
 
 @login_required

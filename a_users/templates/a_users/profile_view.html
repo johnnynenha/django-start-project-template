@@ -5,13 +5,13 @@
         <div class="col col-xl-6 mx-auto p-4 d-flex flex-column align-items-center">
             <img id="avatar_img"
                  class="rounded-circle shadow object-fit mb-3"
-                 src="{{ user.userprofile.avatar_url }}"
+                 src="{{ profile.avatar_url }}"
                  alt="avatar_img"
                  width="180"
                  height="180">
-            <h1 id="profile_displayname" class="text-dark">{{ user.userprofile.name }}</h1>
-            <p id="profile_username" class="text-secondary">@{{ user.username }}</p>
-            {% if user.userprofile.info %}<div class="mt-5">{{ user.userprofile.info }}</div>{% endif %}
+            <h1 id="profile_displayname" class="text-dark">{{ profile.name }}</h1>
+            <p id="profile_username" class="text-secondary">@{{ profile.user.username }}</p>
+            {% if profile.info %}<div class="mt-5">{{ profile.info }}</div>{% endif %}
         </div>
     </div>
 {% endblock content %}
