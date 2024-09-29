@@ -7,8 +7,8 @@
              width="180"
              height="180">
         {% if edit and profile.avatar_img %}
-            <button hx-post="{% url "profile-delete-avatar-image" %}"
-                    hx-confirm="Are you sure you wish to delete your avatar image?"
+            <button hx-get="{% url "profile-delete-avatar-image" %}"
+                    hx-target="#modal_container"
                     class="btn btn-danger mb-3">Remove avatar image</button>
         {% endif %}
         <h1 id="profile_displayname" class="text-dark">{{ profile.name }}</h1>

@@ -77,16 +77,18 @@ def profile_delete(request):
     return render(request, "a_users/profile_delete.html")
 
 
-@require_POST
 @login_required
 def profile_avatar_img_delete(request):
-    user_avatar = request.user.userprofile.avatar_img
-    user_avatar.delete()
 
     if request.htmx:
-        return HttpResponseClientRefresh()
+        return render(request, "a_users/partials/profile_avatar_delete_modal.html")
 
-    return redirect("profile-edit")
+    if request.method == "POST":
+        user_avatar = request.user.userprofile.avatar_img
+        user_avatar.delete()
+        return redirect("profile-edit")
+
+    return redirect("profile-view")
 
 
 @login_required
