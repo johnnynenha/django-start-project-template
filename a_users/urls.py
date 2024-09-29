@@ -4,7 +4,7 @@ from .views import *
 
 
 urlpatterns = [
-    path("me/", profile_view, name="profile-view"),
+    path("", profile_view, name="profile-view"),
     path("edit/", profile_edit, name="profile-edit"),
     path("settings/", profile_settings, name="profile-settings"),
     path("email_verify/", profile_emailverify, name="profile-emailverify"),

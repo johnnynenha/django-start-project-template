@@ -37,7 +37,10 @@
                     <th scope="row">Delete account</th>
                     <td>Permanently delete account</td>
                     <td>
-                        <a href="{% url "profile-delete" %}" class="link-danger">Delete</a>
+                        <a href="#"
+                           hx-get="{% url "profile-delete" %}"
+                           hx-target="#modal_container"
+                           class="link-danger">Delete</a>
                     </td>
                 </tr>
             </tbody>

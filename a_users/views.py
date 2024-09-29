@@ -71,6 +71,9 @@ def profile_delete(request):
         messages.success(request, "Account deleted successfully.")
         return redirect("home")
 
+    if request.htmx:
+        return render(request, "a_users/partials/profile_delete_modal.html")
+
     return render(request, "a_users/profile_delete.html")
 
 
