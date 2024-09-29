@@ -4,6 +4,8 @@ from django.contrib.auth.views import redirect_to_login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from allauth.account.utils import send_email_confirmation
+from django.views.decorators.http import require_POST
+from django_htmx.http import HttpResponseClientRefresh
 
 from .models import UserProfile
 from .forms import UserProfileForm
@@ -67,3 +69,15 @@ def profile_delete(request):
         return redirect("home")
 
     return render(request, "a_users/profile_delete.html")
+
+
+@require_POST
+@login_required
+def profile_avatar_img_delete(request):
+    user_avatar = request.user.userprofile.avatar_img
+    user_avatar.delete()
+
+    if request.htmx:
+        return HttpResponseClientRefresh()
+
+    return redirect("profile-edit")

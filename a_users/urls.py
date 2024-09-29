@@ -9,5 +9,10 @@ urlpatterns = [
     path("settings/", profile_settings, name="profile-settings"),
     path("email_verify/", profile_emailverify, name="profile-emailverify"),
     path("delete/", profile_delete, name="profile-delete"),
+    path(
+        "delete_avatar_image/",
+        profile_avatar_img_delete,
+        name="profile-delete-avatar-image",
+    ),
     path("@<str:username>/", profile_view, name="profile-view-user"),
 ]

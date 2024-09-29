@@ -1,17 +1,5 @@
 {% extends "layouts/blank.html" %}
 
 {% block content %}
-    <div class="row my-4">
-        <div class="col col-xl-6 mx-auto p-4 d-flex flex-column align-items-center">
-            <img id="avatar_img"
-                 class="rounded-circle shadow object-fit mb-3"
-                 src="{{ profile.avatar_url }}"
-                 alt="avatar_img"
-                 width="180"
-                 height="180">
-            <h1 id="profile_displayname" class="text-dark">{{ profile.name }}</h1>
-            <p id="profile_username" class="text-secondary">@{{ profile.user.username }}</p>
-            {% if profile.info %}<div class="mt-5">{{ profile.info }}</div>{% endif %}
-        </div>
-    </div>
+    {% include "a_users/partials/profile.html" %}
 {% endblock content %}

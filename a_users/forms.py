@@ -9,5 +9,9 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ["avatar_img", "displayname", "info"]
         widgets = {
-            "avatar_img": forms.FileInput(),
+            "avatar_img": forms.FileInput(
+                attrs={
+                    "oninput": "renderImage('avatar_img', this)",
+                }
+            ),
         }
