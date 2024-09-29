@@ -12,7 +12,10 @@
                     <th scope="row">Email</th>
                     <td>{{ user.email }}</td>
                     <td>
-                        <a href="#" class="link">Change</a>
+                        <a href="#"
+                           hx-get="{% url "profile-email-change" %}"
+                           hx-target="closest tr"
+                           class="link">Change</a>
                     </td>
                 </tr>
                 <tr>

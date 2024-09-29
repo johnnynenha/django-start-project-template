@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import logout as auth_logout
+from django.contrib.auth import logout as auth_logout, get_user_model
 from django.contrib.auth.views import redirect_to_login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -8,7 +8,10 @@ from django.views.decorators.http import require_POST
 from django_htmx.http import HttpResponseClientRefresh
 
 from .models import UserProfile
-from .forms import UserProfileForm
+from .forms import UserProfileForm, EmailForm
+
+
+User = get_user_model()
 
 
 def profile_view(request, username=None):
@@ -81,3 +84,31 @@ def profile_avatar_img_delete(request):
         return HttpResponseClientRefresh()
 
     return redirect("profile-edit")
+
+
+@login_required
+def profile_email_change(request):
+
+    if request.htmx:
+        form = EmailForm(instance=request.user)
+        return render(request, "a_users/partials/email_form.html", {"form": form})
+
+    if request.method == "POST":
+        form = EmailForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            email = form.cleaned_data["email"]
+
+            if User.objects.filter(email=email).exclude(pk=request.user.pk).exists():
+                messages.warning(request, f"{email} is already in use.")
+                return redirect("profile-settings")
+
+            form.save()
+
+            send_email_confirmation(request, request.user)
+
+            return redirect("profile-settings")
+
+        else:
+            messages.warning(request, "Form not valid")
+            return redirect("profile-settings")

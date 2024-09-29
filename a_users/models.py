@@ -4,6 +4,7 @@ from django.dispatch import receiver
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 from django.templatetags.static import static
+from allauth.account.models import EmailAddress
 
 User = get_user_model()
 
@@ -43,6 +44,20 @@ def handle_userprofile_postsave(sender, instance, created, **kwargs):
 
     if created:
         UserProfile.objects.create(user=user)
+    else:
+        try:
+            email_address = EmailAddress.objects.get_primary(user)
+            if email_address.email != user.email:
+                email_address.email = user.email
+                email_address.verified = False
+                email_address.save()
+        except:
+            EmailAddress.objects.create(
+                user=user,
+                email=user.email,
+                primary=True,
+                verified=False,
+            )
 
 
 @receiver(pre_save, sender=User)

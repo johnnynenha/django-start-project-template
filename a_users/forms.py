@@ -1,6 +1,9 @@
 from django import forms
+from django.contrib.auth import get_user_model
 
 from .models import UserProfile
+
+User = get_user_model()
 
 
 class UserProfileForm(forms.ModelForm):
@@ -15,3 +18,11 @@ class UserProfileForm(forms.ModelForm):
                 }
             ),
         }
+
+
+class EmailForm(forms.ModelForm):
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = User
+        fields = ["email"]
