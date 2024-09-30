@@ -28,7 +28,13 @@
                            href="#"
                            role="button"
                            data-bs-toggle="dropdown"
-                           aria-expanded="false">{{ user.username }}</a>
+                           aria-expanded="false">
+                            <img class="object-fit border border-2 border-light rounded-circle me-1"
+                                 src="{{ user.userprofile.avatar_url }}"
+                                 width="32"
+                                 height="32"
+                                 alt="user avatar image">
+                        {{ user.username }}</a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <a class="dropdown-item" href="{% url "profile-view" %}">{% trans "Profile" %}</a>
