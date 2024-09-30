@@ -17,6 +17,11 @@ class UserProfileForm(forms.ModelForm):
                     "oninput": "renderImage('avatar_img', this)",
                 }
             ),
+            "displayname": forms.TextInput(
+                attrs={
+                    "oninput": "renderText('profile_displayname', this)",
+                }
+            ),
         }
 
 

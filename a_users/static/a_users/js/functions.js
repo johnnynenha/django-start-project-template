@@ -6,3 +6,8 @@ function renderImage(imageElementId, event) {
   let url = URL.createObjectURL(event.files[0]);
   imageElement.src = url;
 }
+
+function renderText(textElementId, event) {
+  const textElement = document.getElementById(textElementId);
+  textElement.innerHTML = event.value;
+}
