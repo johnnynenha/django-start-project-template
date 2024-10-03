@@ -11,7 +11,7 @@
         <script defer src="{% static "alpinejs-3.14.1/js/alpinejs.min.js" %}"></script>
         <script defer src="{% static "htmx-2.0.2/js/htmx.min.js" %}"></script>
     </head>
-    <body>
+    <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
         {% include "includes/loader.html" %}
         {% include "a_htmx_messages/toast_messages.html" %}
         <section id="modal_container">

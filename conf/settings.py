@@ -44,9 +44,13 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "django_htmx",
     "active_link",
+    "django_cleanup.apps.CleanupConfig",
+    "allauth",
+    "allauth.account",
     # apps
     "a_htmx_messages",
     "a_home",
+    "a_users",
 ]
 
 MIDDLEWARE = [
@@ -59,6 +63,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
     "a_htmx_messages.middleware.HtmxMessagesMiddleware",
 ]
 
@@ -97,6 +102,13 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by email
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
 
 
 # Password validation
@@ -164,3 +176,13 @@ MESSAGE_TAGS = {
     messages.WARNING: "text-bg-warning",
     messages.ERROR: "text-bg-danger",
 }
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_CHANGE_EMAIL = True
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

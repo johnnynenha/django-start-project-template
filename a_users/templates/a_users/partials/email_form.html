@@ -1,0 +1,11 @@
+<th scope="row">Email</th>
+<td>
+    <form action="{% url "profile-email-change" %}" method="post" class="mb-2">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Save" class="btn btn-primary">
+    </form>
+</td>
+<td>
+    <a href="{% url "profile-settings" %}" class="link">Cancel</a>
+</td>

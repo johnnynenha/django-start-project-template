@@ -1,0 +1,16 @@
+{% extends "layouts/box.html" %}
+
+{% load static %}
+
+{% block content %}
+    <h1>Profile Edit</h1>
+    <hr>
+    {% include "a_users/partials/profile.html" with profile=user.userprofile edit=True %}
+    <hr>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Save" class="btn btn-primary">
+    </form>
+    <script src="{% static "a_users/js/functions.js" %}"></script>
+{% endblock content %}

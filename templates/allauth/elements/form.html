@@ -1,0 +1,8 @@
+{% load allauth %}
+
+<form class="mb-2" method="{{ attrs.method }}" action="{{ attrs.action }}">
+    {% slot body %}
+{% endslot %}
+{% slot actions %}
+{% endslot %}
+</form>

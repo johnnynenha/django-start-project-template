@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block layout %}
+    <div class="container my-4">
+        <div class="row">
+            <div class="col col-lg-8 col-xl-6 mx-auto">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body">
+
+                        {% block content %}
+                        {% endblock content %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock layout %}

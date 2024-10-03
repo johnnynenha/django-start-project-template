@@ -1,0 +1,49 @@
+{% extends "layouts/box.html" %}
+
+{% load i18n %}
+
+{% block content %}
+    <h1 class="text-center">{% trans "Account settings" %}</h1>
+    <hr>
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <a href="#"
+                           hx-get="{% url "profile-email-change" %}"
+                           hx-target="closest tr"
+                           class="link">Change</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"></th>
+                    <td>
+                        {% if user.emailaddress_set.first.verified %}
+                            <span class="text-success">Verified</span>
+                        {% else %}
+                            <span class="text-warning">Not verified</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not user.emailaddress_set.first.verified %}
+                            <a href="{% url "profile-emailverify" %}" class="link">Verify</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Delete account</th>
+                    <td>Permanently delete account</td>
+                    <td>
+                        <a href="#"
+                           hx-get="{% url "profile-delete" %}"
+                           hx-target="#modal_container"
+                           class="link-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

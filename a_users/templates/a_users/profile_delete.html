@@ -1,0 +1,12 @@
+{% extends "layouts/box.html" %}
+
+{% block content %}
+    <h1>Delete account</h1>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure permanently delete account?</p>
+        <input type="submit" value="Delete" class="btn btn-danger">
+        <a href="{% url "profile-settings" %}" class="btn btn-primary">Cancel</a>
+    </form>
+{% endblock content %}
