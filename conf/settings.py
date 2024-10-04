@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "django_cleanup.apps.CleanupConfig",
     "allauth",
     "allauth.account",
+    "django_cotton",
     # apps
     "a_htmx_messages",
     "a_home",
