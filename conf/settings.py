@@ -179,6 +179,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_CHANGE_EMAIL = True
 
-EMAIL_CONFIG = env.email(default="consolemail://")
 
+EMAIL_CONFIG = env.email(default="consolemail://")
 vars().update(EMAIL_CONFIG)
+
+DEFAULT_FROM_EMAIL = env.str("DEFAULT_FROM_EMAIL", default="webmaster@localhost")
