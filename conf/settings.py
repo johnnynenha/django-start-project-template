@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "django_cotton",
+    "djcelery_email",
     # apps
     "a_htmx_messages",
     "a_home",
@@ -184,3 +185,9 @@ EMAIL_CONFIG = env.email(default="consolemail://")
 vars().update(EMAIL_CONFIG)
 
 DEFAULT_FROM_EMAIL = env.str("DEFAULT_FROM_EMAIL", default="webmaster@localhost")
+
+CELERY_BROKER_URL = env("CELERY_BROKER_URL", default="redis://localhost:6379/0")
+
+if env.bool("CELERY_EMAIL_ENABLED", default=False):
+    CELERY_EMAIL_BACKEND = EMAIL_CONFIG["EMAIL_BACKEND"]
+    EMAIL_BACKEND = "djcelery_email.backends.CeleryEmailBackend"
